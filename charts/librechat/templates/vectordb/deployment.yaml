@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-vectordb
+  labels:
+    {{- include "librechat.labels" . | nindent 4 }}
+    app.kubernetes.io/component: vectordb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "librechat.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: vectordb
+  template:
+    metadata:
+      labels:
+        {{- include "librechat.labels" . | nindent 8 }}
+        app.kubernetes.io/component: vectordb
+    spec:
+      containers:
+        - name: vectordb
+          image: "{{ .Values.vectordb.image.repository }}:{{ .Values.vectordb.image.tag }}"
+          env:
+            - name: POSTGRES_DB
+              value: "librechat"
+            - name: POSTGRES_USER
+              value: "librechat"
+            - name: POSTGRES_PASSWORD
+              value: "librechat"
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-vectordb

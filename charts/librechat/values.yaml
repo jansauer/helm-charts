@@ -1,0 +1,59 @@
+api:
+  image:
+    repository: ghcr.io/danny-avila/librechat
+    tag: v0.7.7
+
+  images:
+    size: 1Gi
+
+  uploads:
+    size: 1Gi
+
+meilisearch:
+  image:
+    repository: getmeili/meilisearch
+    tag: v1.14.0
+
+  persistence:
+    size: 1Gi
+
+mongodb:
+  image:
+    repository: mongo
+    tag: 8.0.8
+
+  persistence:
+    size: 1Gi
+
+rag:
+  image:
+    repository: ghcr.io/danny-avila/librechat-rag-api-dev-lite
+    tag: v0.4.0
+
+vectordb:
+  image:
+    repository: ankane/pgvector
+    tag: v0.5.1
+
+  persistence:
+    size: 1Gi
+
+# Credentials
+# https://www.librechat.ai/toolkit/creds_generator
+credsKey: ""
+credsIv: ""
+jwtSecret: ""
+jwtRefreshSecret: ""
+
+registrationDomains: []
+
+# Needed for the RAG API embeddings
+openaiApiKey: ""
+
+# Custom AI Endpoints
+# https://www.librechat.ai/docs/configuration/librechat_yaml/ai_endpoints
+endpoints: {}
+
+# Traefik Ingress
+traefik:
+  match: ""

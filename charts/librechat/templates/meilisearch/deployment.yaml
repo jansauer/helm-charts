@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-meilisearch
+  labels:
+    {{- include "librechat.labels" . | nindent 4 }}
+    app.kubernetes.io/component: meilisearch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "librechat.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: meilisearch
+  template:
+    metadata:
+      labels:
+        {{- include "librechat.labels" . | nindent 8 }}
+        app.kubernetes.io/component: meilisearch
+    spec:
+      containers:
+        - name: meilisearch
+          image: "{{ .Values.meilisearch.image.repository }}:{{ .Values.meilisearch.image.tag }}"
+          env:
+            - name: MEILI_MASTER_KEY
+              value: "librechat"
+            - name: MEILI_NO_ANALYTICS
+              value: "true"
+          ports:
+            - containerPort: 7700
+          volumeMounts:
+            - name: data
+              mountPath: "/meili_data"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-meilisearch

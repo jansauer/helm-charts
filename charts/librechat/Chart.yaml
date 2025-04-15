@@ -1,0 +1,15 @@
+apiVersion: v2
+type: application
+name: librechat
+description: A sleek, ChatGPT-style web interface that seamlessly integrates with multiple AI providers.
+version: 0.0.1
+appVersion: 0.7.7
+home: https://www.librechat.ai/
+icon: https://www.librechat.ai/android-chrome-512x512.png
+sources:
+  - https://github.com/danny-avila/LibreChat
+  - https://github.com/danny-avila/rag_api
+  - https://github.com/jansauer/helm-charts
+maintainers:
+  - name: Jan Sauer
+    url: https://jansauer.de

@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-rag
+  labels:
+    {{- include "librechat.labels" . | nindent 4 }}
+    app.kubernetes.io/component: rag
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "librechat.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: rag
+  template:
+    metadata:
+      labels:
+        {{- include "librechat.labels" . | nindent 8 }}
+        app.kubernetes.io/component: rag
+    spec:
+      containers:
+        - name: rag
+          image: "{{ .Values.rag.image.repository }}:{{ .Values.rag.image.tag }}"
+          env:
+            - name: RAG_PORT
+              value: "8000"
+            - name: DB_HOST
+              value: "{{ .Release.Name }}-vectordb"
+            - name: POSTGRES_DB
+              value: "librechat"
+            - name: POSTGRES_USER
+              value: "librechat"
+            - name: POSTGRES_PASSWORD
+              value: "librechat"
+            - name: EMBEDDINGS_PROVIDER
+              value: "openai"
+            - name: OPENAI_API_KEY
+              value: "{{ .Values.openaiApiKey }}"
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
