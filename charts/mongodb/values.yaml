@@ -1,0 +1,13 @@
+image:
+  repository: bitnami/mongodb
+  tag: 8.0.10
+
+persistence:
+  size: 1Gi
+
+service:
+  type: ClusterIP
+  ports:
+    mongodb: 27017
+  nodePorts:
+    mongodb: ""

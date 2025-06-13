@@ -1,0 +1,13 @@
+apiVersion: v2
+type: application
+name: mongodb
+description: A source-available, document-oriented NoSQL database.
+version: 0.0.1
+appVersion: 8.0.10
+home: https://www.mongodb.com/
+sources:
+  - https://github.com/jansauer/helm-charts
+  - https://github.com/bitnami/charts/tree/main/bitnami/mongodb
+maintainers:
+  - name: Jan Sauer
+    url: https://jansauer.de
