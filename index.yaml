@@ -21,4 +21,22 @@ entries:
     urls:
     - https://github.com/jansauer/helm-charts/releases/download/librechat-0.0.2/librechat-0.0.2.tgz
     version: 0.0.2
-generated: "2025-06-05T11:58:18.454087218Z"
+  mongodb:
+  - apiVersion: v2
+    appVersion: 8.0.10
+    created: "2025-06-13T09:46:45.501502707Z"
+    description: A source-available, document-oriented NoSQL database.
+    digest: 5bb55c4678d5bf3ed7df09d65128fd4e67cebea9ff36dd2544405f93509257cb
+    home: https://www.mongodb.com/
+    maintainers:
+    - name: Jan Sauer
+      url: https://jansauer.de
+    name: mongodb
+    sources:
+    - https://github.com/jansauer/helm-charts
+    - https://github.com/bitnami/charts/tree/main/bitnami/mongodb
+    type: application
+    urls:
+    - https://github.com/jansauer/helm-charts/releases/download/mongodb-0.0.1/mongodb-0.0.1.tgz
+    version: 0.0.1
+generated: "2025-06-13T09:46:45.501513888Z"
