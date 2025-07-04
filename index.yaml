@@ -3,6 +3,26 @@ entries:
   librechat:
   - apiVersion: v2
     appVersion: 0.7.8
+    created: "2025-07-04T12:38:52.904279978Z"
+    description: A sleek, ChatGPT-style web interface that seamlessly integrates with
+      multiple AI providers.
+    digest: 576ea3cceef682bed81fe05d560596773dfef6d80a42eff24822d5ac85824625
+    home: https://www.librechat.ai/
+    icon: https://www.librechat.ai/android-chrome-512x512.png
+    maintainers:
+    - name: Jan Sauer
+      url: https://jansauer.de
+    name: librechat
+    sources:
+    - https://github.com/danny-avila/LibreChat
+    - https://github.com/danny-avila/rag_api
+    - https://github.com/jansauer/helm-charts
+    type: application
+    urls:
+    - https://github.com/jansauer/helm-charts/releases/download/librechat-0.0.4/librechat-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 0.7.8
     created: "2025-07-04T12:33:46.291470806Z"
     description: A sleek, ChatGPT-style web interface that seamlessly integrates with
       multiple AI providers.
@@ -59,4 +79,4 @@ entries:
     urls:
     - https://github.com/jansauer/helm-charts/releases/download/mongodb-0.0.1/mongodb-0.0.1.tgz
     version: 0.0.1
-generated: "2025-07-04T12:33:46.292304915Z"
+generated: "2025-07-04T12:38:52.904292311Z"
