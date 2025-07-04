@@ -2,7 +2,7 @@ apiVersion: v2
 type: application
 name: librechat
 description: A sleek, ChatGPT-style web interface that seamlessly integrates with multiple AI providers.
-version: 0.0.3
+version: 0.0.4
 appVersion: 0.7.8
 home: https://www.librechat.ai/
 icon: https://www.librechat.ai/android-chrome-512x512.png
