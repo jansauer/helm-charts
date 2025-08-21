@@ -1,6 +1,6 @@
 image:
   repository: bitnami/mongodb
-  tag: 8.0.10
+  tag: 8.0.13
 
 persistence:
   size: 1Gi
