@@ -28,7 +28,7 @@ mongodb:
 rag:
   image:
     repository: ghcr.io/danny-avila/librechat-rag-api-dev-lite
-    tag: v0.5.0
+    tag: v0.6.0
 
 vectordb:
   image:
