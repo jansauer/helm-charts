@@ -1,0 +1,46 @@
+{{- if .Values.traefik.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    {{- include "prometheus.labels" . | nindent 4 }}
+  annotations:
+    {{- include "prometheus.annotations" . | nindent 4 }}
+spec:
+  entryPoints:
+    - "websecure"
+  routes:
+    - kind: "Rule"
+      match: {{ .Values.traefik.match }}
+      middlewares:
+        - name: {{ .Release.Name }}-basicauth
+      services:
+        - name: {{ .Release.Name }}
+          port: 9090
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ .Release.Name }}-basicauth
+  labels:
+    {{- include "prometheus.labels" . | nindent 4 }}
+  annotations:
+    {{- include "prometheus.annotations" . | nindent 4 }}
+spec:
+  basicAuth:
+    secret: {{ .Release.Name }}-basicauth
+    removeHeader: true
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .Release.Name }}-basicauth
+  labels:
+    {{- include "prometheus.labels" . | nindent 4 }}
+  annotations:
+    {{- include "prometheus.annotations" . | nindent 4 }}
+type: Opaque
+data:
+  users: {{ .Values.traefik.basicauth | b64enc | quote }}
+{{- end }}

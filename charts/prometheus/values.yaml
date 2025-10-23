@@ -1,0 +1,11 @@
+image:
+  repository: prom/prometheus
+  tag: v3.7.2
+
+persistence:
+  size: 1Gi
+
+traefik:
+  enabled: true
+  match: ""
+  basicauth: ""

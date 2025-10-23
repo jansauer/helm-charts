@@ -1,0 +1,14 @@
+apiVersion: v2
+name: prometheus
+description: Open-source service monitoring system and time series database.
+home: https://prometheus.io/
+version: 1.0.0
+appVersion: 3.7.2
+sources:
+  - https://github.com/prometheus/prometheus
+  - https://hub.docker.com/r/prom/prometheus/
+  - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus
+maintainers:
+  - name: Jan Sauer
+    email: jan@jansauer.de
+    url: https://jansauer.de

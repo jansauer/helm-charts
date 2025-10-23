@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    {{- include "prometheus.labels" . | nindent 4 }}
+  annotations:
+    {{- include "prometheus.annotations" . | nindent 4 }}
+spec:
+  serviceName: {{ .Release.Name }}
+  selector:
+    matchLabels:
+      {{- include "prometheus.labels" . | nindent 6 }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        {{- include "prometheus.labels" . | nindent 8 }}
+      annotations:
+        {{- include "prometheus.annotations" . | nindent 8 }}
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: prometheus
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          args:
+            - --config.file=/config/prometheus.yml
+            - --storage.tsdb.path=/data
+            - --storage.tsdb.retention.time=6m
+            - --web.enable-otlp-receiver
+          volumeMounts:
+            - name: config
+              mountPath: /config
+              readOnly: true
+            - name: data
+              mountPath: /data
+          ports:
+            - name: web
+              containerPort: 9090
+          startupProbe:
+            httpGet:
+              path: /-/healthy
+              port: web
+              scheme: HTTP
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /-/healthy
+              port: web
+              scheme: HTTP
+            initialDelaySeconds: 2
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /-/ready
+              port: web
+              scheme: HTTP
+            periodSeconds: 10
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+      terminationGracePeriodSeconds: 60
+      volumes:
+        - name: config
+          configMap:
+            name: {{ .Release.Name }}
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}

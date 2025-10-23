@@ -1,0 +1,6 @@
+The Prometheus server can be accessed via the following DNS name from within the cluster:
+{{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local:9090
+
+
+  kubectl port-forward --namespace {{ .Release.Namespace }} svc/{{ .Release.Name }} 9090:9090 & \
+  open http://127.0.0.1:9090
