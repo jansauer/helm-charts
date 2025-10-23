@@ -3,6 +3,26 @@ entries:
   librechat:
   - apiVersion: v2
     appVersion: 0.7.8
+    created: "2025-10-23T19:12:12.691047047Z"
+    description: A sleek, ChatGPT-style web interface that seamlessly integrates with
+      multiple AI providers.
+    digest: c5e670a025781f1981fdd67feb1a43b0ca3f72ad9f97c9adfc79808d7026eba6
+    home: https://www.librechat.ai/
+    icon: https://www.librechat.ai/android-chrome-512x512.png
+    maintainers:
+    - name: Jan Sauer
+      url: https://jansauer.de
+    name: librechat
+    sources:
+    - https://github.com/danny-avila/LibreChat
+    - https://github.com/danny-avila/rag_api
+    - https://github.com/jansauer/helm-charts
+    type: application
+    urls:
+    - https://github.com/jansauer/helm-charts/releases/download/librechat-0.0.7/librechat-0.0.7.tgz
+    version: 0.0.7
+  - apiVersion: v2
+    appVersion: 0.7.8
     created: "2025-08-04T13:48:19.52592492Z"
     description: A sleek, ChatGPT-style web interface that seamlessly integrates with
       multiple AI providers.
@@ -119,4 +139,23 @@ entries:
     urls:
     - https://github.com/jansauer/helm-charts/releases/download/mongodb-0.0.1/mongodb-0.0.1.tgz
     version: 0.0.1
-generated: "2025-08-04T13:48:19.525944678Z"
+  prometheus:
+  - apiVersion: v2
+    appVersion: 3.7.2
+    created: "2025-10-23T19:12:12.873822237Z"
+    description: Open-source service monitoring system and time series database.
+    digest: 67ab7fae5b22c66050e2357936d2f2dbdc9de9178391c857ccb843b7e2c4852a
+    home: https://prometheus.io/
+    maintainers:
+    - email: jan@jansauer.de
+      name: Jan Sauer
+      url: https://jansauer.de
+    name: prometheus
+    sources:
+    - https://github.com/prometheus/prometheus
+    - https://hub.docker.com/r/prom/prometheus/
+    - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus
+    urls:
+    - https://github.com/jansauer/helm-charts/releases/download/prometheus-1.0.0/prometheus-1.0.0.tgz
+    version: 1.0.0
+generated: "2025-10-23T19:12:12.8738607Z"
