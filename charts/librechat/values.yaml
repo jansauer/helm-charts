@@ -1,7 +1,7 @@
 api:
   image:
     repository: ghcr.io/danny-avila/librechat
-    tag: v0.7.9
+    tag: v0.8.1
 
   images:
     size: 1Gi
