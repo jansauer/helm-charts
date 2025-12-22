@@ -12,7 +12,7 @@ api:
 meilisearch:
   image:
     repository: getmeili/meilisearch
-    tag: v1.14.0
+    tag: v1.31.0
 
   persistence:
     size: 1Gi
