@@ -20,7 +20,7 @@ meilisearch:
 mongodb:
   image:
     repository: mongo
-    tag: 8.0.12
+    tag: 8.2.5
 
   persistence:
     size: 1Gi
