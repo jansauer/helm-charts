@@ -1,6 +1,6 @@
 image:
   repository: prom/prometheus
-  tag: v3.8.1
+  tag: v3.11.3
 
 persistence:
   size: 1Gi
